@@ -1,0 +1,16 @@
+<section
+  class="bg-white relative rounded-[10px] px-[28px] mobile:px-[38px] pt-[80px] pb-[45px]"
+  [ngStyle]="{ transform: 'translateY(' + offset + 'px)' }"
+>
+  <div
+    class="w-[90px] aspect-square rounded-full bg-primary-darkViolet absolute top-0 left-[50%] tablet:left-[23%] -translate-x-[50%] -translate-y-[50%] flex justify-center items-center"
+  >
+    <img [src]="logo" alt="" />
+  </div>
+  <section class="flex flex-col justify-center tablet:justify-start items-center tablet:items-start">
+    <h1 class="font-bold text-center tablet:text-start">{{ title }}</h1>
+    <p class="text-[14px] text-neutral-grayishViolet text-center tablet:text-start">
+      {{ content }}
+    </p>
+  </section>
+</section>

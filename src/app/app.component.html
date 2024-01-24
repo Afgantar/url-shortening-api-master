@@ -1,0 +1,16 @@
+<ng-container>
+  <app-navbar
+    class="fixed top-0 left-0 right-0 flex justify-center items-center z-[90] bg-white px-[20px] mobile:px-[30px]"
+  ></app-navbar>
+  @if (service.openNavbar) {
+  <app-mobile-navbar
+    @navbarAnimation
+    class="fixed top-[100px] left-[20px] right-[20px] z-[120] rounded-[10px] flex justify-center items-center bg-primary-darkViolet"
+  ></app-mobile-navbar>
+  }
+  <div class="pt-[100px] mobile:pt-[200px] transition:pt-[100px]">
+    <app-main-app class="w-full"></app-main-app>
+    <app-boost class="w-full"></app-boost>
+    <app-footer class="w-full"></app-footer>
+  </div>
+</ng-container>

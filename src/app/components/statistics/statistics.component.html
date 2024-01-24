@@ -1,0 +1,47 @@
+<main
+  class="w-full flex justify-center items-center px-[30px] bg-neutral-gray pb-[120px]"
+>
+  <section
+    class="flex flex-col justify-center items-center w-full max-w-[330px] mobile:max-w-[560px] tablet:max-w-[1100px] gap-[50px]"
+  >
+    <div
+      class="w-full flex flex-col gap-[20px] mt-[30px] transition:mt-[20px] mobile:mt-[60px]"
+    >
+      @for (data of listData; track data) {
+      <app-links-card
+        @cardEnter
+        [originalLink]="data.original"
+        [shortenedLink]="data.shortened"
+      ></app-links-card>
+      }
+    </div>
+    <section class="flex-col flex justify-center items-center mt-[100px] gap-[20px] mobile:gap-0">
+      <h1
+        class=" text-[25px] mobile:text-[30px] tablet:text-[40px] text-neutral-veryDarkViolet font-bold text-center mobile:text-start"
+      >
+        Advanced Statistics
+      </h1>
+      <p
+        class="text-neutral-grayishViolet max-w-[540px] text-center text-[15px] mobile:text-[16px] tablet:text-[18px]"
+      >
+        Track how your links are performing across the web with our advanced
+        statistics dashboard.
+      </p>
+    </section>
+    <section
+      class="flex flex-col tablet:flex-row items-center gap-[80px] tablet:gap-[30px] mt-[70px] relative w-full"
+    >
+      <div
+        class="w-[10px] -translate-x-[50%] left-[50%] tablet:translate-x-0 tablet:left-0 tablet:w-full h-full tablet:h-[10px] bg-primary-cyan absolute"
+      ></div>
+      @for (card of cardData; track card.title) {
+      <app-card
+        [title]="card.title"
+        [content]="card.content"
+        [logo]="card.logo"
+        [offset]="windowWidth < 801 ? '0' : card.offset"
+      ></app-card>
+      }
+    </section>
+  </section>
+</main>

@@ -1,0 +1,44 @@
+<main
+  class="w-full flex justify-center items-center h-[200px] bg-white px-[30px] relative"
+>
+  <div class="absolute bg-neutral-gray h-[50%] w-full bottom-0"></div>
+  <section
+    class="flex justify-center items-center w-full max-w-[1100px] z-[20] box-border bg-primary-darkViolet p-[20px] mobile:p-[35px] tablet:p-[50px] rounded-[10px] bg-center bg-cover"
+    [ngStyle]="{ 'background-image': backgroundImage }"
+  >
+    <section
+      class="flex flex-col transition:flex-row justify-center transition:justify-between items-center w-full gap-[30px] mobile:gap-[50px] transition:gap-[20px]"
+    >
+      <div class="w-full transition:w-auto transition:grow relative">
+        <input
+          #input
+          class="px-[10px] mobile:px-[50px] py-[15px] rounded-[10px] outline-none border-[3px] transition-all ease-in-out duration-300 w-full text-[15px] mobile:text-[16px] tablet:text-[18px]"
+          [ngClass]="
+            empty.status
+              ? 'border-secondary-red placeholder:text-secondary-red'
+              : 'border-transparent'
+          "
+          type="text"
+          [value]="service.globalData"
+          placeholder="Shorten a link here..."
+          (change)="inputChange(input.value)"
+          name="urlInput"
+        />
+        @if (empty.status) {
+        <label
+          for="urlInput"
+          class="text-secondary-red text-[14px] italic absolute -bottom-[25px] left-0"
+          @showMessage
+          >{{ empty.message }}</label
+        >
+        }
+      </div>
+      <button
+        class="bg-primary-cyan text-white px-[50px] py-[15px] rounded-[10px] hover:bg-primary-cyanHover transition-all ease-in-out duration-300 w-full transition:w-auto text-[15px] mobile:text-[16px] tablet:text-[18px]"
+        (click)="click()"
+      >
+        Shorten It!
+      </button>
+    </section>
+  </section>
+</main>

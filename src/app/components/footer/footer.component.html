@@ -1,0 +1,39 @@
+<footer
+  class="w-full bg-neutral-veryDarkViolet flex justify-center items-center py-[55px] px-[30px]"
+>
+  <section
+    class="w-full max-w-[1100px] flex flex-col sm:flex-row justify-center sm:justify-between items-center sm:items-start gap-[30px] sm:gap-0"
+  >
+    <h1 class="text-[25px] text-white font-bold">Shortly</h1>
+    <section
+      class="text-white flex flex-col mobile:flex-row justify-center mobile:justify-start items-center mobile:items-start w-full sm:w-auto min-w-0 mobile:min-w-[75%] tablet:min-w-[65%] gap-[40px] mobile:gap-0"
+    >
+      @for (info of infos; track info) {
+      <div class="flex flex-col flex-1 gap-[20px]">
+        <p class="font-bold text-[14px] text-center mobile:text-start">{{ info.title }}</p>
+        <ul class="flex flex-col items-center mobile:items-start">
+          @for (content of info.contents; track content) {
+          <button
+            class="text-[14px] text-neutral-gray hover:text-primary-cyan transition-colors ease-in-out duration-300 text-center mobile:text-start"
+          >
+            {{ content }}
+          </button>
+          }
+        </ul>
+      </div>
+      }
+      <div class="flex justify-end gap-[15px] flex-1">
+        @for (logo of logos; track logo) {
+        <button (mouseenter)="onMouseEnter(logo.original)" (mouseleave)="onMouseLeave()" class="flex justify-center items-center w-[30px] aspect-square relative">
+          @if (logo.original === hovering) {
+            <img @transitionAnimation [src]="logo.blue" alt="Button Icon" class="absolute"/>
+          }
+          @else {
+            <img @transitionAnimation [src]="logo.original" alt="Button Icon" class="absolute"/>
+          }
+        </button>
+        }
+      </div>
+    </section>
+  </section>
+</footer>

@@ -1,0 +1,41 @@
+<header
+  class="max-w-[330px] mobile:max-w-[560px] tablet:max-w-[1100px] flex flex-row mobile:flex-col transition:flex-row justify-between mobile:justify-center transition:justify-between items-center w-full py-[30px] transition:gap-0 gap-[30px]"
+>
+  <section
+    class="flex flex-row mobile:flex-col transition:flex-row justify-between mobile:justify-center transition:justify-between items-center gap-[10px] transition:gap-[30px]"
+  >
+    <h1 class="text-[25px] font-bold text-neutral-veryDarkViolet">Shortly</h1>
+    <nav>
+      <ul class="text-neutral-grayishViolet hidden mobile:flex items-center gap-[25px]">
+        @for (selection of selectionNames; track selection) {
+        <button
+          class="text-[14px] hover:text-neutral-veryDarkViolet transition-colors ease-in-out duration-300"
+        >
+          {{ selection }}
+        </button>
+        }
+      </ul>
+    </nav>
+  </section>
+  <section
+    class="text-neutral-grayishViolet text-[14px] gap-[30px] flex justify-end mobile:justify-around transition:justify-start items-center transition:w-auto w-full"
+  >
+    <button
+      class="hover:text-neutral-veryDarkViolet transition-colors ease-in-out duration-300 hidden mobile:block"
+    >
+      Login
+    </button>
+    <button
+      class="text-white bg-primary-cyan leading-none px-[25px] py-[12px] rounded-full hover:bg-primary-cyanHover transition-all ease-in-out duration-300 hidden mobile:block"
+    >
+      Sign Up
+    </button>
+    <button (click)="onClick()" class="block mobile:hidden">
+      <div class="w-[25px] aspect-[4/3] flex flex-col justify-between items-center">
+        <div class="w-full bg-neutral-grayishViolet rounded-full h-[3px]"></div>
+        <div class="w-full bg-neutral-grayishViolet rounded-full h-[3px]"></div>
+        <div class="w-full bg-neutral-grayishViolet rounded-full h-[3px]"></div>
+      </div>
+    </button>
+  </section>
+</header>

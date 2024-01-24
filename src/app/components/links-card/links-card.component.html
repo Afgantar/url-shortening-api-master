@@ -1,0 +1,28 @@
+<section class="w-full flex justify-center items-center bg-transparent">
+  <section
+    class="w-full max-w-[1100px] bg-white flex flex-col transition:flex-row justify-center transition:justify-between items-start transition:items-center px-0 transition:px-[30px] transition:py-[15px] py-0 rounded-[10px] transition:gap-0"
+  >
+    <p
+      class="text-primary-darkViolet transition:border-b-0 border-b-[2px] border-b-neutral-gray w-full transition:w-auto p-[15px] transition:p-0 text-[15px] mobile:text-[16px] tablet:text-[18px]"
+    >
+      {{ originalLink }}
+    </p>
+    <div
+      class="flex flex-col transition:flex-row items-start transition:items-center gap-[20px] transition:gap-[30px] p-[15px] transition:p-0 w-full transition:w-auto"
+    >
+      <p class="text-primary-cyan text-[15px] mobile:text-[16px] tablet:text-[18px]">{{ shortenedLink }}</p>
+      <button
+        [cdkCopyToClipboard]="shortenedLink"
+        (click)="click()"
+        class="text-white px-[30px] py-[10px] rounded-[10px] hover:bg-primary-cyanHover transition-all ease-in-out duration-300 text-[14px] w-full transition:w-auto"
+        [ngClass]="
+          indicator.copiedData === shortenedLink
+            ? 'bg-primary-darkViolet hover:bg-primary-darkViolet'
+            : 'bg-primary-cyan'
+        "
+      >
+        {{ indicator.copiedData === shortenedLink ? "Copied" : "Copy" }}
+      </button>
+    </div>
+  </section>
+</section>
