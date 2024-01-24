@@ -3,9 +3,7 @@ import { Component, HostListener, OnInit, inject } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
-// import { environment } from '../../../environments/environment';
-import dotenv from 'dotenv';
-dotenv.config();
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-link-input',
@@ -34,7 +32,7 @@ export class LinkInputComponent implements OnInit {
   windowWidth: number;
 
   constructor() {
-    this.apiUrl = process.env.API_KEY as string;
+    this.apiUrl = environment.apiUrl as string;
     this.empty = {
       status: false,
       message: '',
@@ -63,7 +61,7 @@ export class LinkInputComponent implements OnInit {
   }
 
   postFunction(): void {
-    const url = `${this.apiUrl}/api/post`;
+    const url: string = `${this.apiUrl}/api/post`;
     this.http.post(url, {
       url: this.service.globalData,
     }).subscribe({
