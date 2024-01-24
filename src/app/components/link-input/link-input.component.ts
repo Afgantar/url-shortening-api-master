@@ -5,6 +5,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 // import { environment } from '../../../environments/environment';
 import dotenv from 'dotenv';
+dotenv.config();
 
 @Component({
   selector: 'app-link-input',
