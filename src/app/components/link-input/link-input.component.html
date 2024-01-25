@@ -14,7 +14,9 @@
           #input
           class="px-[10px] mobile:px-[50px] py-[15px] rounded-[10px] outline-none border-[3px] transition-all ease-in-out duration-300 w-full text-[15px] mobile:text-[16px] tablet:text-[18px]"
           [ngClass]="
-            empty.status
+            fetching
+              ? 'border-primary-cyan placeholder:text-primary-cyan'
+              : empty.status
               ? 'border-secondary-red placeholder:text-secondary-red'
               : 'border-transparent'
           "
@@ -24,12 +26,19 @@
           (change)="inputChange(input.value)"
           name="urlInput"
         />
-        @if (empty.status) {
+        @if (empty.status && !fetching) {
         <label
           for="urlInput"
           class="text-secondary-red text-[14px] italic absolute -bottom-[25px] left-0"
           @showMessage
           >{{ empty.message }}</label
+        >
+        } @if (fetching) {
+        <label
+          for="urlInput"
+          class="text-primary-cyan text-[14px] italic absolute -bottom-[25px] left-0"
+          @showMessage
+          >Processing Link...</label
         >
         }
       </div>

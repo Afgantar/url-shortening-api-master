@@ -29,6 +29,7 @@ export class LinkInputComponent implements OnInit {
   service = inject(GlobalService);
   backgroundImage: string;
   empty: Empty;
+  fetching: boolean;
   windowWidth: number;
 
   constructor() {
@@ -39,6 +40,7 @@ export class LinkInputComponent implements OnInit {
     };
     this.windowWidth = window.innerWidth;
     this.backgroundImage = '';
+    this.fetching = false;
   }
 
   ngOnInit(): void {
@@ -61,6 +63,7 @@ export class LinkInputComponent implements OnInit {
   }
 
   postFunction(): void {
+    this.fetching = true;
     const url: string = `${this.apiUrl}/api/post`;
     this.http.post(url, {
       url: this.service.globalData,
@@ -72,12 +75,14 @@ export class LinkInputComponent implements OnInit {
           status: false,
           message: '',
         };
+        this.fetching = false;
       },
       error: (error) => {
         this.empty = {
           status: true,
-          message: 'Input a valid link',
-        }
+          message: error.error.error as string,
+        };
+        this.fetching = false;
       }
     })
   }
